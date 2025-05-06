@@ -20,6 +20,7 @@ import AddEditEvent from "./pages/Events/Event/AddEditEvent.tsx";
 import Bookings from "./pages/Bookings/index.tsx";
 import Booking from "./pages/Bookings/Booking/index.tsx";
 import Deals from "./pages/Deals/index";
+import Policies from "./pages/Policies/index.tsx";
 
 const queryClient = new QueryClient();
 
@@ -58,6 +59,7 @@ createRoot(document.getElementById("root")!).render(
             <Route index element={<Deals />} path="/deals" />
 
             <Route index element={<Promotions />} path="/promotions" />
+            <Route index element={<Policies />} path="/policies" />
 
             
           </Route>
