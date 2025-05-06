@@ -1,0 +1,38 @@
+@import "tailwindcss";
+
+@theme {
+  --font-display: "Satoshi", "sans-serif";
+
+  --color-primary-50: oklch(95% 0.03 328.56);
+  --color-primary-100: oklch(90% 0.05 328.56);
+  --color-primary-200: oklch(80% 0.08 328.56);
+  --color-primary-300: oklch(70% 0.11 328.56);
+  --color-primary-400: oklch(60% 0.14 328.56);
+  --color-primary-500: oklch(50% 0.17 328.56);
+  --color-primary-600: oklch(44% 0.18 328.56); /* closest to original #6A1B4D */
+  --color-primary:     oklch(38.22% 0.180 328.56);
+  --color-primary-800: oklch(32% 0.16 328.56);
+  --color-primary-900: oklch(25% 0.14 328.56);
+  --color-primary-950: oklch(15% 0.10 328.56);
+}
+
+body {
+  margin: 0;
+}
+
+/* You can also define these as tailwind plugin utilities or in a CSS file */
+.form-label {
+  @apply block mb-1 text-sm font-medium text-gray-700;
+}
+
+.form-input {
+  @apply w-full px-3 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-primary-500;
+}
+
+.form-error {
+  @apply text-red-600 text-sm mt-1;
+}
+
+.form-button {
+  @apply text-sm text-primary-600 hover:underline mt-1;
+}
