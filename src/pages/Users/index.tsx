@@ -24,7 +24,10 @@ export function Users() {
     gender: string;
   }>(null); 
   const [isModalOpen, setIsModalOpen] = useState(false); // Whether the modal is open
-  const [actionType, setActionType] = useState<"ban" | "verify" | "edit" | null>(null); // Action being taken (ban, verify, edit)
+  const [actionType, setActionType] = useState<"ban" | "verify" | "edit" | null>(null); 
+  const [searchTerm, setSearchTerm] = useState("");
+  const [genderFilter, setGenderFilter] = useState("All");
+
 
   const { register, handleSubmit, formState: { errors } } = useForm();
 
@@ -45,12 +48,40 @@ export function Users() {
     setIsModalOpen(false);
   };
 
+  const filteredUsers = users.filter((user) => {
+    const matchesSearch = user.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      user.email.toLowerCase().includes(searchTerm.toLowerCase());
+
+    const matchesGender = genderFilter === "All" || user.gender === genderFilter;
+
+    return matchesSearch && matchesGender;
+  });
+
   return (
     <div className="p-5">
       <h1 className="mb-4 text-2xl font-semibold">User Management</h1>
       <div className="flow-root border-0 ">
         <div className="-mx-4 -my-2 sm:-mx-6 lg:-mx-8">
-          <div className="relative min-w-full py-2  align-middle ">
+          <div className="relative min-w-full py-2 px-8 align-middle ">
+            <div className="flex flex-wrap items-center gap-4 mb-4 ">
+              <input
+                type="text"
+                placeholder="Search by name or email"
+                value={searchTerm}
+                onChange={(e) => setSearchTerm(e.target.value)}
+                className="p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-1 focus:ring-primary-600 flex-1"
+              />
+
+              <select
+                value={genderFilter}
+                onChange={(e) => setGenderFilter(e.target.value)}
+                className="p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-1 focus:ring-primary-600"
+              >
+                <option value="All">All Genders</option>
+                <option value="Male">Male</option>
+                <option value="Female">Female</option>
+              </select>
+            </div>
             <table className="w-full max-w-full  border-separate border-spacing-0">
               <thead>
                 <tr>
@@ -76,7 +107,7 @@ export function Users() {
                 </tr>
               </thead>
               <tbody>
-                {users.map((user) => (
+                {filteredUsers.map((user) => (
                   <tr key={user.id} >
                     <td className={classNames(
                       user.id !== mockUsers.length - 1

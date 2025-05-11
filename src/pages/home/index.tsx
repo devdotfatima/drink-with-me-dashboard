@@ -1,6 +1,9 @@
 import { useEffect, useState } from "react";
 import Charts from "./components/Charts";
 import Stats from "./components/Stats";
+import UserTrendsChart from "./components/UserTrendsChart";
+import UserHeatmap from "./components/UserHeatmap";
+import UserLeaderboard from "./components/UserLeaderboard";
 import {
   fetchMonthlyBookings,
   fetchTotals,
@@ -31,6 +34,9 @@ const Home = () => {
     <div className="flex flex-col gap-16">
       <Stats totals={totals} />
       <Charts monthlyData={monthlyData} />
+      <UserTrendsChart />
+    <UserHeatmap />
+        <UserLeaderboard />
     </div>
   );
 };

@@ -21,6 +21,9 @@ import Bookings from "./pages/Bookings/index.tsx";
 import Booking from "./pages/Bookings/Booking/index.tsx";
 import Deals from "./pages/Deals/index";
 import Policies from "./pages/Policies/index.tsx";
+import ReportManagement from "./pages/ReportManagement/index.tsx";
+import Notifications from "./pages/Notifications/index.tsx";
+import { AdminActivityLogs } from "./pages/AdminActivityLogs/index.tsx";
 
 const queryClient = new QueryClient();
 
@@ -60,6 +63,11 @@ createRoot(document.getElementById("root")!).render(
 
             <Route index element={<Promotions />} path="/promotions" />
             <Route index element={<Policies />} path="/policies" />
+
+            <Route index element={<ReportManagement />} path="/reports" />
+
+            <Route index element={<Notifications />} path="/notifications" />
+            <Route index element={<AdminActivityLogs />} path="/admin-logs" />
 
             
           </Route>

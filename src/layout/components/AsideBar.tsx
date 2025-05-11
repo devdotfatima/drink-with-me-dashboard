@@ -8,6 +8,9 @@ import {
   Percent,
   FileText,
   ClipboardCheck,
+  ShieldCheck,
+  Bell,
+  Text
 } from "lucide-react";
 import { useLocation, useNavigate } from "react-router";
 import {
@@ -38,10 +41,14 @@ export function AsideBar() {
   const adminNavItems = [
     { name: "Users", path: "/users", icon: Users },
     { name: "Events", path: "/events", icon: CalendarCheck },
+    { name: "Notifications", path: "/notifications", icon: Bell },
+
     { name: "Venues", path: "/venues", icon: MapPin },
     { name: "Bookings", path: "/bookings", icon: ClipboardCheck },
     { name: "Deals", path: "/deals", icon: Percent },
+    { name: "Reports", path: "/reports", icon: ShieldCheck },
     { name: "Policies", path: "/policies", icon: FileText },
+    { name: "Admin Logs", path: "/admin-logs", icon: Text },
   ];
   return (
     <SidebarComponent>
